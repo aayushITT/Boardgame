@@ -1,35 +1,74 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bloggingapp-deployment
+  name: boardgame-deployment
 spec:
+  replicas: 2
   selector:
     matchLabels:
-      app: bloggingapp
-  replicas: 2
+      app: boardgame
   template:
     metadata:
       labels:
-        app: bloggingapp
+        app: boardgame
     spec:
       containers:
-        - name: bloggingapp
-          image: aayush292003/blogging-app:latest # this will be overridden by Jenkins
+        - name: boardgame
+          image: aayush292003/blogging-app:latest # <-- update if using ECR
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
-      imagePullSecrets:
+      imagePullSecrets:                     # <-- moved to the pod spec
         - name: regcred
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: bloggingapp-ssvc
+  name: boardgame-ssvc
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
 spec:
   selector:
-    app: bloggingapp
+    app: boardgame
   ports:
-    - protocol: "TCP"
+    - protocol: TCP
       port: 80
-      targetPort: 8080 
+      targetPort: 8080
   type: LoadBalancer
+
+# apiVersion: apps/v1
+# kind: Deployment # Kubernetes resource kind we are creating
+# metadata:
+#   name: boardgame-deployment
+# spec:
+#   selector:
+#     matchLabels:
+#       app: boardgame
+#   replicas: 2 # Number of replicas that will be created for this deployment
+#   template:
+#     metadata:
+#       labels:
+#         app: boardgame
+#     spec:
+#       containers:
+#         - name: boardgame
+#           image: venkatbs/workshop:latest # Image that will be used to containers in the cluster
+#           imagePullPolicy: Always
+#           ports:
+#             - containerPort: 8080 # The port that the container is running on in the cluster
+
+
+# ---
+
+# apiVersion: v1 # Kubernetes API version
+# kind: Service # Kubernetes resource kind we are creating
+# metadata: # Metadata of the resource kind we are creating
+#   name: boardgame-ssvc
+# spec:
+#   selector:
+#     app: boardgame
+#   ports:
+#     - protocol: "TCP"
+#       port: 80
+#       targetPort: 8080 
+#   type: LoadBalancer # type of the service.
