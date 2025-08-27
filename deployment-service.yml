@@ -14,12 +14,12 @@ spec:
     spec:
       containers:
         - name: bloggingapp
-          image: aayush292003/blogging-app:latest # Updated image to private DockerHub image
+          image: aayush292003/blogging-app:latest # this will be overridden by Jenkins
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
       imagePullSecrets:
-        - name: regcred # Reference to the Docker registry secret
+        - name: regcred
 ---
 apiVersion: v1
 kind: Service
