@@ -1,6 +1,6 @@
 ---
 
-# BoardgameListing WebApp – CI/CD Deployment on AWS EKS
+# Boardgame WebApp – CI/CD Deployment on AWS EKS
 
 ---
 description: |
