@@ -2,12 +2,15 @@
 
 # BoardgameListing WebApp – CI/CD Deployment on AWS EKS
 
-## Description
+---
+description: |
+  BoardgameListing Web Application is a full-stack platform that lists board games and user reviews. 
+  While anyone can browse games and reviews, users must log in to add new games or submit reviews. 
+  Managers have extended privileges to edit or delete reviews.
 
-**BoardgameListing Web Application** is a full-stack platform that lists board games and user reviews. While anyone can browse games and reviews, users must log in to add new games or submit reviews. Managers have extended privileges to edit or delete reviews.
-
-This project demonstrates a **secure, automated, and monitored CI/CD pipeline** on AWS, integrating Jenkins, SonarQube, Nexus, Docker, Trivy, EKS, Prometheus, and Grafana to ensure reliable application deployment and observability.
-
+  This project demonstrates a secure, automated, and monitored CI/CD pipeline on AWS, 
+  integrating Jenkins, SonarQube, Nexus, Docker, Trivy, EKS, Prometheus, and Grafana 
+  to ensure reliable application deployment and observability.
 ---
 
 ## Technologies Used
