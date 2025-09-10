@@ -3,7 +3,7 @@
 # Boardgame WebApp – CI/CD Deployment on AWS EKS
 
 ---
-description: |
+## description:
   BoardgameListing Web Application is a full-stack platform that lists board games and user reviews. 
   While anyone can browse games and reviews, users must log in to add new games or submit reviews. 
   Managers have extended privileges to edit or delete reviews.
